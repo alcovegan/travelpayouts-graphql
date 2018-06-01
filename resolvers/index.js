@@ -11,6 +11,9 @@ const resolvers = {
         },
         weekMatrix: (_, args) => {
             return api.weekMatrix(args)
+        },
+        nearestPlacesMatrix: (_, args) => {
+            return api.nearestPlacesMatrix(args)
         }
       }
 }
