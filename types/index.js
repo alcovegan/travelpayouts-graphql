@@ -1,9 +1,10 @@
 const typeDefs = `
     type Query {
         latest(origin: String, destination: String, currency: String, beginning_of_period: String, period_type: String, one_way: Boolean, page: Int, limit: Int, show_to_affiliates: Boolean, sorting: String, trip_duration: Int, generateUrls: GenerateUrls): [Latest]
-        monthMatrix(origin: String, destination: String, month: String, show_to_affiliates: Boolean, currency: String, generateUrls: GenerateUrls): [monthMatrix]
-        weekMatrix(origin: String, destination: String, depart_date: String, return_date: String, show_to_affiliates: Boolean, currency: String, generateUrls: GenerateUrls): [weekMatrix]
-        nearestPlacesMatrix(origin: String, destination: String, depart_date: String, return_date: String, distance: Int, limit: Int, flexibility: Int, show_to_affiliates: Boolean, currency: String, generateUrls: GenerateUrls): [nearestPlacesMatrix]
+        monthMatrix(origin: String, destination: String, month: String, show_to_affiliates: Boolean, currency: String, generateUrls: GenerateUrls): [MonthMatrix]
+        weekMatrix(origin: String, destination: String, depart_date: String, return_date: String, show_to_affiliates: Boolean, currency: String, generateUrls: GenerateUrls): [WeekMatrix]
+        nearestPlacesMatrix(origin: String, destination: String, depart_date: String, return_date: String, distance: Int, limit: Int, flexibility: Int, show_to_affiliates: Boolean, currency: String, generateUrls: GenerateUrls): [NearestPlacesMatrix]
+        cheap(origin: String, destination: String, depart_date: String, return_date: String, page: Int, currency: String, generateUrls: GenerateUrls): [Cheap]
     }
     # Params for generating search links.
     # See: https://github.com/alcovegan/travelpayouts-js documentation
@@ -39,7 +40,7 @@ const typeDefs = `
     }
     # Get tickets calendar for a month.
     # See [library documentation for this method](https://github.com/alcovegan/travelpayouts-js#apimonthmatrixoptions)
-    type monthMatrix {
+    type MonthMatrix {
         value: Float
         trip_class: Int
         show_to_affiliates: Boolean
@@ -57,7 +58,7 @@ const typeDefs = `
     }
     # Get tickets week calendar
     # See [library documentation for this method](https://github.com/alcovegan/travelpayouts-js#apiweekmatrixoptions)
-    type weekMatrix {
+    type WeekMatrix {
         value: Float
         trip_class: Int
         show_to_affiliates: Boolean
@@ -73,7 +74,7 @@ const typeDefs = `
     }
     # Get prices for destinations nearest to original destination
     # See [library documentation for this method](https://github.com/alcovegan/travelpayouts-js#apinearestplacesmatrixoptions)
-    type nearestPlacesMatrix {
+    type NearestPlacesMatrix {
         origin: String
         destination: String
         value: Float
@@ -87,6 +88,18 @@ const typeDefs = `
         duration: Int
         distance: Int
         actual: Boolean
+        searchlink: String
+    }
+    type Cheap {
+        price: Float
+        airline: String
+        flight_number: Int
+        departure_at: String
+        return_at: String
+        expires_at: String
+        origin: String
+        destination: String
+        number_of_changes: Int
         searchlink: String
     }
 `

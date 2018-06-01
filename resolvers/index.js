@@ -14,6 +14,9 @@ const resolvers = {
         },
         nearestPlacesMatrix: (_, args) => {
             return api.nearestPlacesMatrix(args)
+        },
+        cheap: (_, args) => {
+            return api.cheap(args)
         }
       }
 }
