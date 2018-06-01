@@ -1,0 +1,20 @@
+{
+  "name": "express-graphql-test",
+  "version": "1.0.0",
+  "description": "Travelpayouts API Graphql Endpoint",
+  "main": "index.js",
+  "scripts": {
+    "start": "NODE_ENV=production node index.js",
+    "dev": "NODE_ENV=development node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3",
+    "express-graphql": "^0.6.12",
+    "graphql": "^0.13.2",
+    "graphql-tools": "^3.0.2",
+    "travelpayouts-js": "^1.0.1"
+  }
+}
