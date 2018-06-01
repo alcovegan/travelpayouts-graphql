@@ -6,6 +6,10 @@ const resolvers = {
         latest: (_, args) => {
             console.log(args);
             return api.latest(args)
+        },
+        monthMatrix: (_, args) => {
+            console.log(args);
+            return api.monthMatrix(args)
         }
       }
 }
