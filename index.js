@@ -1,11 +1,13 @@
 const express = require('express');
 const express_graphql = require('express-graphql');
 const { buildSchema } = require('graphql');
+const cors = require('cors');
 const schema = require('./schema');
 const checkAuth = require('./helpers/checkAuth');
 
 const app = express();
 
+app.use(cors());
 app.use('/graphql', checkAuth, express_graphql({
     schema: schema,
     graphiql: process.env.NODE_ENV === 'development' ? true : false
