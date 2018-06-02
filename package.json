@@ -4,13 +4,14 @@
   "description": "Travelpayouts API Graphql Endpoint",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=production node index.js",
-    "dev": "NODE_ENV=development node index.js"
+    "start": "pm2 start process.json --env production",
+    "dev": "pm2 start process.json"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^5.0.1",
     "express": "^4.16.3",
     "express-graphql": "^0.6.12",
     "graphql": "^0.13.2",
