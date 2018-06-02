@@ -11,6 +11,7 @@ const typeDefs = `
         direct(origin: String, destination: String, depart_date: String, return_date: String, currency: String, generateUrls: GenerateUrls): [Direct]
         calendar(origin: String, destination: String, depart_date: String, return_date: String, calendar_type: String, trip_duration: Int, currency: String, generateUrls: GenerateUrls): [Calendar]
         minPricesCalendar(origin: String, destination: String, depart_date: String, one_way: Boolean): MinPricesCalendar
+        directions(origin_iata: String, one_way: Boolean, locale: String): Directions
     }
     # Params for generating search links.
     # See: [documentation](https://github.com/alcovegan/travelpayouts-js)
@@ -156,9 +157,43 @@ const typeDefs = `
     # Get minimal prices for specified destinations and dates
     # See [library documentation for this method](https://github.com/alcovegan/travelpayouts-js#apiminpricescalendaroptions)
     # Currently only resolve best_prices and current_depart_date_prices as raw JSON without types
+    type MinPricesCalendarStructure {
+        value: Float
+        trip_class: Int
+        show_to_affiliates: Boolean
+        return_date: String
+        origin: String
+        number_of_changes: Int
+        gate: String
+        found_at: String
+        distance: Int
+        destination: String
+        depart_date: String
+        actual: Boolean
+    }
     type MinPricesCalendar {
-        best_prices: JSON
-        current_depart_date_prices: JSON
+        best_prices: [MinPricesCalendarStructure]
+        current_depart_date_prices: [MinPricesCalendarStructure]
+    }
+    type DirectionOrigin {
+        iata: String
+        name: String
+        country: String
+        coordinates: [Float]
+    }
+    type Direction {
+        direct: Boolean
+        iata: String
+        name: String
+        country: String
+        country_name: String
+        coordinates: [Float]
+        weight: Int
+        weather: JSON
+    }
+    type Directions {
+        origin: DirectionOrigin
+        directions: [Direction]
     }
 `
 

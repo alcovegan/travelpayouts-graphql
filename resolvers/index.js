@@ -31,6 +31,9 @@ const resolvers = {
         },
         minPricesCalendar: (_, args) => {
             return api.minPricesCalendar(args)
+        },
+        directions: (_, args) => {
+            return api.directions(args)
         }
       }
 }
