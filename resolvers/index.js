@@ -37,6 +37,12 @@ const resolvers = {
         },
         prices: (_, args) => {
             return api.prices(args)
+        },
+        airline: (_, args) => {
+            return api.airline(args)
+        },
+        city: (_, args) => {
+            return api.city(args)
         }
       }
 }
