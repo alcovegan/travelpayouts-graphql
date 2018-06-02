@@ -191,6 +191,8 @@ const typeDefs = `
         weight: Int
         weather: JSON
     }
+    # Get supported directions for specified iata code
+    # See [library documentation for this method](https://github.com/alcovegan/travelpayouts-js#apidirectionsoptions)
     type Directions {
         origin: DirectionOrigin
         directions: [Direction]
