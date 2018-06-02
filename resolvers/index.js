@@ -1,3 +1,4 @@
+require('dotenv').config();
 const GraphQLJSON = require('graphql-type-json');
 const apiKey = process.env.TPAPIKEY;
 const api = require('travelpayouts-js')(apiKey);
