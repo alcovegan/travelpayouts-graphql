@@ -1,0 +1,20 @@
+{
+	"apps": [
+		{
+			"name": "travelpayouts-graphql",
+			"script": "./index.js",
+			"watch": ["helpers", "resolvers", "types"],
+			"ignore_watch": ["node_modules"],
+			"watch_options": {
+				"followSymlinks": false
+			},
+			"env": {
+				"NODE_ENV": "development",
+				"PORT": 4000
+			},
+			"env_production": {
+				"NODE_ENV": "production",
+			},
+			"log_date_format": "YYYY-MM-DD HH:mm Z"
+	}]
+}
