@@ -9,7 +9,7 @@ const typeDefs = `
         direct(origin: String, destination: String, depart_date: String, return_date: String, currency: String): [Direct]
     }
     # Params for generating search links.
-    # See: https://github.com/alcovegan/travelpayouts-js documentation
+    # See: [documentation](https://github.com/alcovegan/travelpayouts-js)
     input GenerateUrls {
         oneway: Int
         adults: Int
