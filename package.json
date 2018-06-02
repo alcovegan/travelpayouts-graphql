@@ -1,5 +1,5 @@
 {
-  "name": "express-graphql-test",
+  "name": "travelpayouts-graphql",
   "version": "1.0.0",
   "description": "Travelpayouts API Graphql Endpoint",
   "main": "index.js",
@@ -7,8 +7,8 @@
     "start": "pm2 start process.json --env production",
     "dev": "pm2 start process.json"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["travelpayouts", "api", "graphql"],
+  "author": "Alexander Sharabarov <alcovegan@gmail.com>",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.4",
