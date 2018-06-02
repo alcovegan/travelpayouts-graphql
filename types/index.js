@@ -1,4 +1,6 @@
 const typeDefs = `
+    scalar JSON
+
     type Query {
         latest(origin: String, destination: String, currency: String, beginning_of_period: String, period_type: String, one_way: Boolean, page: Int, limit: Int, show_to_affiliates: Boolean, sorting: String, trip_duration: Int, generateUrls: GenerateUrls): [Latest]
         monthMatrix(origin: String, destination: String, month: String, show_to_affiliates: Boolean, currency: String, generateUrls: GenerateUrls): [MonthMatrix]
@@ -6,8 +8,9 @@ const typeDefs = `
         nearestPlacesMatrix(origin: String, destination: String, depart_date: String, return_date: String, distance: Int, limit: Int, flexibility: Int, show_to_affiliates: Boolean, currency: String, generateUrls: GenerateUrls): [NearestPlacesMatrix]
         cheap(origin: String, destination: String, depart_date: String, return_date: String, page: Int, currency: String, generateUrls: GenerateUrls): [Cheap]
         monthly(origin: String, destination: String, month: String, show_to_affiliates: Boolean, currency: String, generateUrls: GenerateUrls): [Monthly]
-        direct(origin: String, destination: String, depart_date: String, return_date: String, currency: String): [Direct]
+        direct(origin: String, destination: String, depart_date: String, return_date: String, currency: String, generateUrls: GenerateUrls): [Direct]
         calendar(origin: String, destination: String, depart_date: String, return_date: String, calendar_type: String, trip_duration: Int, currency: String, generateUrls: GenerateUrls): [Calendar]
+        minPricesCalendar(origin: String, destination: String, depart_date: String, one_way: Boolean): MinPricesCalendar
     }
     # Params for generating search links.
     # See: [documentation](https://github.com/alcovegan/travelpayouts-js)
@@ -133,6 +136,7 @@ const typeDefs = `
         expires_at: String
         origin: String
         destination: String
+        searchlink: String
     }
     # Get cheapest ticket with 0, 1 or 2 changes for every day of month
     # See [library documentation for this method](https://github.com/alcovegan/travelpayouts-js#apicalendaroptions)
@@ -147,6 +151,14 @@ const typeDefs = `
         return_at: String
         expires_at: String
         day_of_month: String
+        searchlink: String
+    }
+    # Get minimal prices for specified destinations and dates
+    # See [library documentation for this method](https://github.com/alcovegan/travelpayouts-js#apiminpricescalendaroptions)
+    # Currently only resolve best_prices and current_depart_date_prices as raw JSON without types
+    type MinPricesCalendar {
+        best_prices: JSON
+        current_depart_date_prices: JSON
     }
 `
 
