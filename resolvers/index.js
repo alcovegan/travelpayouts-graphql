@@ -23,6 +23,9 @@ const resolvers = {
         },
         direct: (_, args) => {
             return api.direct(args)
+        },
+        calendar: (_, args) => {
+            return api.calendar(args)
         }
       }
 }

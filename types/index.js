@@ -7,6 +7,7 @@ const typeDefs = `
         cheap(origin: String, destination: String, depart_date: String, return_date: String, page: Int, currency: String, generateUrls: GenerateUrls): [Cheap]
         monthly(origin: String, destination: String, month: String, show_to_affiliates: Boolean, currency: String, generateUrls: GenerateUrls): [Monthly]
         direct(origin: String, destination: String, depart_date: String, return_date: String, currency: String): [Direct]
+        calendar(origin: String, destination: String, depart_date: String, return_date: String, calendar_type: String, trip_duration: Int, currency: String, generateUrls: GenerateUrls): [Calendar]
     }
     # Params for generating search links.
     # See: [documentation](https://github.com/alcovegan/travelpayouts-js)
@@ -122,6 +123,7 @@ const typeDefs = `
         searchlink: String
     }
     # Get cheapest ticket without changes
+    # See [library documentation for this method](https://github.com/alcovegan/travelpayouts-js#apidirectoptions)
     type Direct {
         price: Float
         airline: String
@@ -131,6 +133,20 @@ const typeDefs = `
         expires_at: String
         origin: String
         destination: String
+    }
+    # Get cheapest ticket with 0, 1 or 2 changes for every day of month
+    # See [library documentation for this method](https://github.com/alcovegan/travelpayouts-js#apicalendaroptions)
+    type Calendar {
+        origin: String
+        destination: String
+        price: Float
+        transfers: Int
+        airline: String
+        flight_number: Int
+        departure_at: String
+        return_at: String
+        expires_at: String
+        day_of_month: String
     }
 `
 
