@@ -10,7 +10,7 @@ const typeDefs = `
         monthly(origin: String, destination: String, month: String, show_to_affiliates: Boolean, currency: String, generateUrls: GenerateUrls): [Monthly]
         direct(origin: String, destination: String, depart_date: String, return_date: String, currency: String, generateUrls: GenerateUrls): [Direct]
         calendar(origin: String, destination: String, depart_date: String, return_date: String, calendar_type: String, trip_duration: Int, currency: String, generateUrls: GenerateUrls): [Calendar]
-        minPricesCalendar(origin: String, destination: String, depart_date: String, one_way: Boolean): MinPricesCalendar
+        minPricesCalendar(origin: String, destination: String, depart_date: String, one_way: Boolean, generateUrls: GenerateUrls): MinPricesCalendar
         directions(origin_iata: String, one_way: Boolean, locale: String): Directions
     }
     # Params for generating search links.
@@ -170,6 +170,7 @@ const typeDefs = `
         destination: String
         depart_date: String
         actual: Boolean
+        searchlink: String
     }
     type MinPricesCalendar {
         best_prices: [MinPricesCalendarStructure]
