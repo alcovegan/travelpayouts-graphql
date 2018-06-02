@@ -20,6 +20,9 @@ const resolvers = {
         },
         monthly: (_, args) => {
             return api.monthly(args)
+        },
+        direct: (_, args) => {
+            return api.direct(args)
         }
       }
 }

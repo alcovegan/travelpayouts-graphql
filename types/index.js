@@ -6,6 +6,7 @@ const typeDefs = `
         nearestPlacesMatrix(origin: String, destination: String, depart_date: String, return_date: String, distance: Int, limit: Int, flexibility: Int, show_to_affiliates: Boolean, currency: String, generateUrls: GenerateUrls): [NearestPlacesMatrix]
         cheap(origin: String, destination: String, depart_date: String, return_date: String, page: Int, currency: String, generateUrls: GenerateUrls): [Cheap]
         monthly(origin: String, destination: String, month: String, show_to_affiliates: Boolean, currency: String, generateUrls: GenerateUrls): [Monthly]
+        direct(origin: String, destination: String, depart_date: String, return_date: String, currency: String): [Direct]
     }
     # Params for generating search links.
     # See: https://github.com/alcovegan/travelpayouts-js documentation
@@ -119,6 +120,17 @@ const typeDefs = `
         expires_at: String
         month: String
         searchlink: String
+    }
+    # Get cheapest ticket without changes
+    type Direct {
+        price: Float
+        airline: String
+        flight_number: Int
+        departure_at: String
+        return_at: String
+        expires_at: String
+        origin: String
+        destination: String
     }
 `
 
