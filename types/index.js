@@ -5,6 +5,7 @@ const typeDefs = `
         weekMatrix(origin: String, destination: String, depart_date: String, return_date: String, show_to_affiliates: Boolean, currency: String, generateUrls: GenerateUrls): [WeekMatrix]
         nearestPlacesMatrix(origin: String, destination: String, depart_date: String, return_date: String, distance: Int, limit: Int, flexibility: Int, show_to_affiliates: Boolean, currency: String, generateUrls: GenerateUrls): [NearestPlacesMatrix]
         cheap(origin: String, destination: String, depart_date: String, return_date: String, page: Int, currency: String, generateUrls: GenerateUrls): [Cheap]
+        monthly(origin: String, destination: String, month: String, show_to_affiliates: Boolean, currency: String, generateUrls: GenerateUrls): [Monthly]
     }
     # Params for generating search links.
     # See: https://github.com/alcovegan/travelpayouts-js documentation
@@ -90,6 +91,8 @@ const typeDefs = `
         actual: Boolean
         searchlink: String
     }
+    # Get cheapest tickets with 0, 1, 2 and 3 transfers (param "number_of_changes" in response)
+    # See [library documentation for this method](https://github.com/alcovegan/travelpayouts-js#apicheapoptions)
     type Cheap {
         price: Float
         airline: String
@@ -100,6 +103,21 @@ const typeDefs = `
         origin: String
         destination: String
         number_of_changes: Int
+        searchlink: String
+    }
+    # Get prices for each day of the month, grouped by number of stops
+    # See [library documentation for this method](https://github.com/alcovegan/travelpayouts-js#apimonthlyoptions)
+    type Monthly {
+        origin: String
+        destination: String
+        price: Float
+        transfers: Int
+        airline: String
+        flight_number: Int
+        departure_at: String
+        return_at: String
+        expires_at: String
+        month: String
         searchlink: String
     }
 `

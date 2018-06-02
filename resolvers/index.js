@@ -17,6 +17,9 @@ const resolvers = {
         },
         cheap: (_, args) => {
             return api.cheap(args)
+        },
+        monthly: (_, args) => {
+            return api.monthly(args)
         }
       }
 }
