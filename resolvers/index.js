@@ -34,6 +34,9 @@ const resolvers = {
         },
         directions: (_, args) => {
             return api.directions(args)
+        },
+        prices: (_, args) => {
+            return api.prices(args)
         }
       }
 }

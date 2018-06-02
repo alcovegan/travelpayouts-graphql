@@ -12,6 +12,7 @@ const typeDefs = `
         calendar(origin: String, destination: String, depart_date: String, return_date: String, calendar_type: String, trip_duration: Int, currency: String, generateUrls: GenerateUrls): [Calendar]
         minPricesCalendar(origin: String, destination: String, depart_date: String, one_way: Boolean, generateUrls: GenerateUrls): MinPricesCalendar
         directions(origin_iata: String, one_way: Boolean, locale: String): Directions
+        prices(origin_iata: String, period: String, direct: Boolean, one_way: Boolean, no_visa: Boolean, schengen: Boolean, need_visa: Boolean, locale: String, min_trip_duration_in_days: Int, max_trip_duration_in_days: Int, generateUrls: GenerateUrls): [Prices]
     }
     # Params for generating search links.
     # See: [documentation](https://github.com/alcovegan/travelpayouts-js)
@@ -197,6 +198,25 @@ const typeDefs = `
     type Directions {
         origin: DirectionOrigin
         directions: [Direction]
+    }
+    # Get prices for tickets from specified origin
+    # See [library documentation for this method](https://github.com/alcovegan/travelpayouts-js#apipricesoptions)
+    type Prices {
+        value: Float
+        ttl: Int
+        trip_class: Int
+        show_to_affiliates: Boolean
+        return_date: String
+        origin: String
+        number_of_changes: Int
+        gate: String
+        found_at: String
+        distance: Int
+        destination: String
+        depart_date: String
+        created_at: Int
+        actual: Boolean
+        searchlink: String
     }
 `
 
