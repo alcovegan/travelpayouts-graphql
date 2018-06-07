@@ -281,7 +281,6 @@ describe('GraphQL endpoint single requests', function() {
 
 		this.timeout(10000)
 		const result = await request(endpoint, city)
-		console.log(result);
 
 		expect(result.city).to.be.an('array')
 		expect(result.city[0]).to.be.an('object')
