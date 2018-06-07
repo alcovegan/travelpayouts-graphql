@@ -14,7 +14,7 @@ const typeDefs = `
         directions(origin_iata: String, one_way: Boolean, locale: String): Directions
         prices(origin_iata: String, period: String, direct: Boolean, one_way: Boolean, no_visa: Boolean, schengen: Boolean, need_visa: Boolean, locale: String, min_trip_duration_in_days: Int, max_trip_duration_in_days: Int, generateUrls: GenerateUrls): [Prices]
         airline(airline_iata: String, limit: Int): JSON
-        city(origin: String, currency: String): [City]
+        city(origin: String, currency: String, generateUrls: GenerateUrls): [City]
     }
     # Params for generating search links.
     # See: [documentation](https://github.com/alcovegan/travelpayouts-js)
@@ -232,6 +232,7 @@ const typeDefs = `
         departure_at: String
         return_at: String
         expires_at: String
+        searchlink: String
     }
 `
 
