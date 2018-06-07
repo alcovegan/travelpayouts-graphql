@@ -22,34 +22,35 @@ npm start # production-режим
 
 ## Примеры
 
-Запрос билетов за 48 часов и календарь цен на месяц в один запрос с полями origin, destination, value, depart_date, return_date, number_of_changes и searchlink:
+**Пример использования с [graphql-request](https://github.com/prismagraphql/graphql-request).**
 
-```graphql
-{
-  latest(origin: "MOW", destination: "BKK", limit: 10, currency:"RUB", generateUrls:{
-    url: "http://hydra.aviasales.ru"
-  }){
+Запрос билетов за 48 часов и календарь цен на месяц в один запрос с полями origin, destination, value, searchlink:
+
+```javascript
+const { request } = require('graphql-request');
+
+const query = `{
+    latest(origin: "MOW", destination: "BKK", limit: 10, currency:"RUB", generateUrls:{
+      url: "http://hydra.aviasales.ru"
+    }) {
       origin
       destination
       value
-      depart_date
-      return_date
-      number_of_changes
       searchlink
     },
-  monthMatrix(origin:"MOW", destination:"BKK", month:"2018-06-01", currency:"RUB", generateUrls:{
+  monthMatrix(origin:"MOW",destination:"BKK",month:"2018-06-01", currency:"RUB", generateUrls:{
     url:"http://hydra.aviasales.ru"
-  }){
+  }) {
       origin
       destination
       value
-      depart_date
-      return_date
-      number_of_changes
       searchlink
-    }
-}
+  }
+}`;
+
+request('http://localhost:4000/graphql', query).then(data => console.log(data));
 ```
+
 
 ## Лицензия
 
