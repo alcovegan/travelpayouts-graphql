@@ -1,6 +1,7 @@
 const { request } = require('graphql-request')
 const expect = require('chai').expect
 const endpoint = 'http://localhost:4000/graphql' || process.env.GRAPHQL_ENDPOINT
+const timeoutValue = 10000
 
 const {
 	latest,
@@ -15,14 +16,15 @@ const {
 	directions,
 	prices,
 	airline,
-	city
+	city,
+	bigQuery
 } = require('./queries')
 
 describe('GraphQL endpoint single requests', function() {
 
 	it('latest query', async function() {
 
-		this.timeout(10000)
+		this.timeout(timeoutValue)
 		const result = await request(endpoint, latest)
 
 		expect(result.latest).to.be.an('array')
@@ -45,7 +47,7 @@ describe('GraphQL endpoint single requests', function() {
 
 	it('monthMatrix query', async function() {
 
-		this.timeout(10000)
+		this.timeout(timeoutValue)
 		const result = await request(endpoint, monthMatrix)
 
 		expect(result.monthMatrix).to.be.an('array')
@@ -68,7 +70,7 @@ describe('GraphQL endpoint single requests', function() {
 
 	it('weekMatrix query', async function() {
 
-		this.timeout(10000)
+		this.timeout(timeoutValue)
 		const result = await request(endpoint, weekMatrix)
 
 		expect(result.weekMatrix).to.be.an('array')
@@ -88,7 +90,7 @@ describe('GraphQL endpoint single requests', function() {
 
 	it('nearestPlacesMatrix query', async function() {
 
-		this.timeout(10000)
+		this.timeout(timeoutValue)
 		const result = await request(endpoint, nearestPlacesMatrix)
 
 		expect(result.nearestPlacesMatrix).to.be.an('array')
@@ -111,7 +113,7 @@ describe('GraphQL endpoint single requests', function() {
 
 	it('cheap query', async function() {
 
-		this.timeout(10000)
+		this.timeout(timeoutValue)
 		const result = await request(endpoint, cheap)
 
 		expect(result.cheap).to.be.an('array')
@@ -130,7 +132,7 @@ describe('GraphQL endpoint single requests', function() {
 
 	it('monthly query', async function() {
 
-		this.timeout(10000)
+		this.timeout(timeoutValue)
 		const result = await request(endpoint, monthly)
 
 		expect(result.monthly).to.be.an('array')
@@ -150,7 +152,7 @@ describe('GraphQL endpoint single requests', function() {
 
 	it('direct query', async function() {
 
-		this.timeout(10000)
+		this.timeout(timeoutValue)
 		const result = await request(endpoint, direct)
 
 		expect(result.direct).to.be.an('array')
@@ -165,7 +167,7 @@ describe('GraphQL endpoint single requests', function() {
 
 	it('calendar query', async function() {
 
-		this.timeout(10000)
+		this.timeout(timeoutValue)
 		const result = await request(endpoint, calendar)
 
 		expect(result.calendar).to.be.an('array')
@@ -185,7 +187,7 @@ describe('GraphQL endpoint single requests', function() {
 
 	it('minPricesCalendar query', async function() {
 
-		this.timeout(10000)
+		this.timeout(timeoutValue)
 		const result = await request(endpoint, minPricesCalendar)
 
 		expect(result.minPricesCalendar.best_prices).to.be.an('array')
@@ -224,7 +226,7 @@ describe('GraphQL endpoint single requests', function() {
 
 	it('directions query', async function() {
 
-		this.timeout(10000)
+		this.timeout(timeoutValue)
 		const result = await request(endpoint, directions)
 
 		expect(result.directions).to.be.an('object')
@@ -247,7 +249,7 @@ describe('GraphQL endpoint single requests', function() {
 
 	it('prices query', async function() {
 
-		this.timeout(10000)
+		this.timeout(timeoutValue)
 		const result = await request(endpoint, prices)
 
 		expect(result.prices).to.be.an('array')
@@ -271,7 +273,7 @@ describe('GraphQL endpoint single requests', function() {
 
 	it('airline query', async function() {
 
-		this.timeout(10000)
+		this.timeout(timeoutValue)
 		const result = await request(endpoint, airline)
 
 		expect(result.airline).to.be.an('object')
@@ -279,7 +281,7 @@ describe('GraphQL endpoint single requests', function() {
 
 	it('city query', async function() {
 
-		this.timeout(10000)
+		this.timeout(timeoutValue)
 		const result = await request(endpoint, city)
 
 		expect(result.city).to.be.an('array')
@@ -296,4 +298,73 @@ describe('GraphQL endpoint single requests', function() {
 		expect(result.city[0].searchlink).to.be.an('string')
 	});
 
+});
+
+describe('GraphQL endpoint single big request', function() {
+	it('Can make a big query in one request', async function() {
+
+		this.timeout(timeoutValue)
+		const result = await request(endpoint, bigQuery)
+
+		expect(result.latest).to.be.an('array')
+		expect(result.latest[0].origin).to.be.an('string')
+		expect(result.latest[0].destination).to.be.an('string')
+		expect(result.latest[0].value).to.be.an('number')
+		expect(result.latest[0].searchlink).to.be.an('string')
+
+		expect(result.monthly).to.be.an('array')
+		expect(result.monthly[0].origin).to.be.an('string')
+		expect(result.monthly[0].destination).to.be.an('string')
+		expect(result.monthly[0].price).to.be.an('number')
+		expect(result.monthly[0].searchlink).to.be.an('string')
+
+		expect(result.monthMatrix).to.be.an('array')
+		expect(result.monthMatrix[0].origin).to.be.an('string')
+		expect(result.monthMatrix[0].destination).to.be.an('string')
+		expect(result.monthMatrix[0].value).to.be.an('number')
+		expect(result.monthMatrix[0].searchlink).to.be.an('string')
+
+		expect(result.nearestPlacesMatrix).to.be.an('array')
+		expect(result.nearestPlacesMatrix[0].origin).to.be.an('string')
+		expect(result.nearestPlacesMatrix[0].destination).to.be.an('string')
+		expect(result.nearestPlacesMatrix[0].value).to.be.an('number')
+		expect(result.nearestPlacesMatrix[0].searchlink).to.be.an('string')
+
+		expect(result.prices).to.be.an('array')
+		expect(result.prices[0].origin).to.be.an('string')
+		expect(result.prices[0].destination).to.be.an('string')
+		expect(result.prices[0].value).to.be.an('number')
+		expect(result.prices[0].searchlink).to.be.an('string')
+
+		expect(result.weekMatrix).to.be.an('array')
+		expect(result.weekMatrix[0].origin).to.be.an('string')
+		expect(result.weekMatrix[0].destination).to.be.an('string')
+		expect(result.weekMatrix[0].value).to.be.an('number')
+		expect(result.weekMatrix[0].searchlink).to.be.an('string')
+
+		expect(result.calendar).to.be.an('array')
+		expect(result.calendar[0].origin).to.be.an('string')
+		expect(result.calendar[0].destination).to.be.an('string')
+		expect(result.calendar[0].price).to.be.an('number')
+		expect(result.calendar[0].searchlink).to.be.an('string')
+
+		expect(result.cheap).to.be.an('array')
+		expect(result.cheap[0].origin).to.be.an('string')
+		expect(result.cheap[0].destination).to.be.an('string')
+		expect(result.cheap[0].price).to.be.an('number')
+		expect(result.cheap[0].searchlink).to.be.an('string')
+
+		expect(result.city).to.be.an('array')
+		expect(result.city[0].origin).to.be.an('string')
+		expect(result.city[0].destination).to.be.an('string')
+		expect(result.city[0].price).to.be.an('number')
+		expect(result.city[0].searchlink).to.be.an('string')
+
+		expect(result.direct).to.be.an('array')
+		expect(result.direct[0].origin).to.be.an('string')
+		expect(result.direct[0].destination).to.be.an('string')
+		expect(result.direct[0].price).to.be.an('number')
+		expect(result.direct[0].searchlink).to.be.an('string')
+
+	});
 });

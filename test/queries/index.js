@@ -11,6 +11,7 @@ const directions = require('./directions')
 const prices = require('./prices')
 const airline = require('./airline')
 const city = require('./city')
+const bigQuery = require('./bigQuery')
 
 module.exports = {
 	latest,
@@ -25,5 +26,6 @@ module.exports = {
 	directions,
 	prices,
 	airline,
-	city
+	city,
+	bigQuery
 };
