@@ -1,5 +1,5 @@
 const nearestPlacesMatrix = `{
-	nearestPlacesMatrix(origin:"MOW", destination:"LED", depart_date:"2018-10-05", return_date:"2018-10-17", flexibility:7, currency:"RUB", generateUrls:{
+	nearestPlacesMatrix(origin:"MOW", destination:"LED", depart_date:"2021-02-25", return_date:"2021-03-02", flexibility:7, currency:"RUB", generateUrls:{
 			url:"http://hydra.aviasales.ru"
 		}) {
 		origin

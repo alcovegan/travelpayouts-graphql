@@ -1,5 +1,5 @@
 const monthMatrix = `{
-	monthMatrix(origin:"MOW",destination:"BKK",month:"2018-10-01", currency:"RUB", generateUrls:{
+	monthMatrix(origin:"MOW",destination:"BKK",month:"2021-11-01", currency:"RUB", generateUrls:{
 	    url:"http://hydra.aviasales.ru"
 	}) {
 	    value

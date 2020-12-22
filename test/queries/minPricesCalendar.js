@@ -1,5 +1,5 @@
 const minPricesCalendar = `{
-    minPricesCalendar(origin:"MOW",destination:"LED",depart_date:"2018-10-05", generateUrls:{
+    minPricesCalendar(origin:"MOW",destination:"LED",depart_date:"2021-11-05", generateUrls:{
         url:"http://hydra.aviasales.ru"
     }) {
 	    best_prices {

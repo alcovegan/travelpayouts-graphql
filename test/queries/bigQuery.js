@@ -7,7 +7,7 @@ const bigQuery = `{
 		value
 		searchlink
 	},
-    monthly(origin:"MOW", destination:"LED", month:"2018-10-01", generateUrls:{
+    monthly(origin:"MOW", destination:"LED", month:"2021-10-01", generateUrls:{
     	url:"http://hydra.aviasales.ru"
     }) {
 	    origin
@@ -15,7 +15,7 @@ const bigQuery = `{
 	    price
 	    searchlink
     }
-	monthMatrix(origin:"MOW",destination:"BKK",month:"2018-10-01", currency:"RUB", generateUrls:{
+	monthMatrix(origin:"MOW",destination:"BKK",month:"2021-10-01", currency:"RUB", generateUrls:{
 	    url:"http://hydra.aviasales.ru"
 	}) {
 	    origin
@@ -23,7 +23,7 @@ const bigQuery = `{
 	    value
 	    searchlink
 	}
-	nearestPlacesMatrix(origin:"MOW", destination:"LED", depart_date:"2018-10-05", return_date:"2018-10-17", flexibility:7, currency:"RUB", generateUrls:{
+	nearestPlacesMatrix(origin:"MOW", destination:"LED", depart_date:"2021-10-05", return_date:"2021-10-08", flexibility:7, currency:"RUB", generateUrls:{
 			url:"http://hydra.aviasales.ru"
 		}) {
 		origin
@@ -39,7 +39,7 @@ const bigQuery = `{
 	    value
 	    searchlink
     }
-    weekMatrix(origin:"MOW",destination:"BKK",depart_date:"2018-10-05", return_date:"2018-10-15", generateUrls:{
+    weekMatrix(origin:"MOW",destination:"BKK",depart_date:"2021-10-05", return_date:"2021-10-15", generateUrls:{
     	url:"http://hydra.aviasales.ru"
     }) {
 	    origin
@@ -47,7 +47,7 @@ const bigQuery = `{
 	    value
 	    searchlink
     }
-    calendar(origin:"MOW", destination:"LED", depart_date:"2018-10", generateUrls:{
+    calendar(origin:"MOW", destination:"BCN", depart_date:"2021-10", generateUrls:{
     	url:"http://hydra.aviasales.ru"
     }) {
 	    origin

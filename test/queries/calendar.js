@@ -1,5 +1,5 @@
 const calendar = `{
-    calendar(origin:"MOW", destination:"LED", depart_date:"2018-10", generateUrls:{
+    calendar(origin: "MOW", destination: "LED", depart_date: "2021-10", generateUrls:{
     	url:"http://hydra.aviasales.ru"
     }) {
 	    origin
